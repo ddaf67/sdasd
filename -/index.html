@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card-body">
+                    <form id="task-form">
+                        <div class="form-group">
+                            <input type="text" id="task-title" class="form-control" placeholder="Titulo del post">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="task-description" rows="3" class="form-control"
+                                placeholder="Descripcion del post"></textarea>
+                        </div>
+                        <button class="btn btn-primary" id="btn-task-form">
+                            Guardar
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div id="task-container" class="col-md-6">
+
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+        // TODO: Replace the following with your app's Firebase project configuration
+        // See: https://support.google.com/firebase/answer/7015592
+        const firebaseConfig = {
+        apiKey: "AIzaSyBuQfhwDObV4Z-nqwv9Bi4LijuQ7z2dk7w",
+            authDomain: "ciberpe-5f0cd.firebaseapp.com",
+                projectId: "ciberpe-5f0cd",
+                    storageBucket: "ciberpe-5f0cd.appspot.com",
+                        messagingSenderId: "1094933241613",
+                            appId: "1:1094933241613:web:c45fdbaf924259cd33da44"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Cloud Firestore and get a reference to the service
+        const db = getFirestore(app);
+        try {
+            const docRef = await addDoc(collection(db, "tentradas"), {
+                titulo: "Ada",
+                descripcion: "Lovelace"
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+            
+    </script>
+</body>
+
+</html>
+
+
+
